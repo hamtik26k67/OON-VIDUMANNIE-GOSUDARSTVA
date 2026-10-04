@@ -5,7 +5,7 @@ compatibility_date = "2025-06-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "states-bot"
-database_id = "ВСТАВЬ_СЮДА_ID_БАЗЫ"
+database_id = "cdaf8d33-714d-4905-bdf5-42ea924edf86"
 
 [vars]
 OWNER_USERNAME = "hamtik26kk"
