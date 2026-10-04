@@ -1,0 +1,19 @@
+name = "states-bot"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "states-bot"
+database_id = "ВСТАВЬ_СЮДА_ID_БАЗЫ"
+
+[vars]
+OWNER_USERNAME = "hamtik26kk"
+# После первого /id в боте впиши сюда свой числовой ID (надёжнее, чем username)
+OWNER_ID = ""
+# Сколько людей получают рассылку за одну минуту (на бесплатном тарифе не больше 45)
+BATCH = "40"
+
+# Каждую минуту досылает новости остальным пользователям
+[triggers]
+crons = ["* * * * *"]

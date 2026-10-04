@@ -1,0 +1,66 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY,
+  username TEXT DEFAULT '',
+  first_name TEXT DEFAULT '',
+  step TEXT,
+  data TEXT,
+  blocked INTEGER DEFAULT 0,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS admins (
+  user_id INTEGER PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS states (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  name_key TEXT NOT NULL UNIQUE,
+  description TEXT DEFAULT '',
+  leader_id INTEGER NOT NULL UNIQUE,
+  weather TEXT DEFAULT '',
+  html_file_id TEXT,
+  html_name TEXT,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS members (
+  state_id INTEGER NOT NULL,
+  user_id INTEGER NOT NULL,
+  PRIMARY KEY (state_id, user_id)
+);
+
+CREATE TABLE IF NOT EXISTS posts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  state_id INTEGER NOT NULL,
+  kind TEXT NOT NULL,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS requests (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  kind TEXT NOT NULL,
+  user_id INTEGER NOT NULL,
+  state_id INTEGER,
+  name TEXT,
+  description TEXT DEFAULT '',
+  status TEXT DEFAULT 'pending',
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS news (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  state_id INTEGER,
+  author_id INTEGER,
+  header TEXT,
+  kind TEXT,
+  text TEXT DEFAULT '',
+  from_chat INTEGER,
+  message_id INTEGER,
+  last_user INTEGER DEFAULT 0,
+  sent INTEGER DEFAULT 0,
+  done INTEGER DEFAULT 0,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
